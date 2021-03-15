@@ -1,4 +1,6 @@
 <?php
+require_once 'UserInfo.php';
+
 class User {
   private $id;
   protected $nome;
@@ -8,6 +10,8 @@ class User {
   private $password;
   public $dataNascita;
   public $avatar;
+
+  use UserInfo;
 
   public function __construct($_id, $_nome, $_cognome, $_email, $_username) {
     $this->id = $_id;
@@ -19,7 +23,7 @@ class User {
 
   public function setPassword($_password) {
     if (strlen($_password) < 6) {
-      throw new Exception('Inserire almeno 6 caratteri');
+      throw new Exception('La password deve essere lunga almeno 6 caratteri');
     } else {
       $this->password = $_password;
     }
